@@ -3,6 +3,7 @@ package com.anabelenhernandez.despensainteligente.repository;
 import java.util.Date;
 import java.util.List;
 
+import com.anabelenhernandez.despensainteligente.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
