@@ -1,9 +1,8 @@
 package com.anabelenhernandez.despensainteligente.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Alerta {
@@ -12,25 +11,25 @@ public class Alerta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAlerta;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInventario")
-    private Inventario inventario;
+    @NotNull(message = "El nombre de la alerta no puede ser nulo")
+    @Size(min = 2, max = 100, message = "El nombre de la alerta debe tener entre 2 y 100 caracteres")
+    private String nombre;
 
-    @NotNull(message = "El mensaje no puede ser nulo")
-    @Size(min = 5, message = "El mensaje debe tener al menos 5 caracteres")
-    private String mensaje;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private Usuario usuario;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlerta;
+    @NotNull(message = "La fecha de creación no puede ser nula")
+    private String fechaCreacion;
 
     // Constructor vacío necesario para JPA
     public Alerta() {}
 
     // Constructor con parámetros
-    public Alerta(Inventario inventario, String mensaje, Date fechaAlerta) {
-        this.inventario = inventario;
-        this.mensaje = mensaje;
-        this.fechaAlerta = fechaAlerta;
+    public Alerta(String nombre, Usuario usuario, String fechaCreacion) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.fechaCreacion = fechaCreacion;
     }
 
     // Getters y setters
@@ -42,27 +41,27 @@ public class Alerta {
         this.idAlerta = idAlerta;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public Date getFechaAlerta() {
-        return fechaAlerta;
+    public String getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFechaAlerta(Date fechaAlerta) {
-        this.fechaAlerta = fechaAlerta;
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

@@ -1,36 +1,90 @@
-# Problemas y Soluciones - Proyecto Despensa Inteligente
+🚧 Problemas y Soluciones - Proyecto Despensa Inteligente 🚧
+📝 Problemas Relacionados con Jira
+⚠️ Problema: Estructura Inicial
 
-Este archivo documenta los principales problemas enfrentados durante el desarrollo del proyecto "Despensa Inteligente" y las soluciones implementadas.
+🔹 No estaba claro cómo organizar épicos, tareas y subtareas.
+💡 Solución:
+✅ Definir épicos basados en funcionalidades: Gestión de Usuarios, Productos, Inventarios y Alertas.
+✅ Dividir épicos en tareas y subtareas.
+⚠️ Problema: Sincronización con Ramas de Git
 
-## Índice
-1. [Problemas Relacionados con Jira](#problemas-relacionados-con-jira)
-   - [Problema 1: Estructura Inicial](#problema-1-estructura-inicial)
-   - [Problema 2: Sincronización con Ramas de Git](#problema-2-sincronización-con-ramas-de-git)
-2. [Problemas Relacionados con Git](#problemas-relacionados-con-git)
-   - [Problema 1: Commits Ausentes o Incorrectos](#problema-1-commits-ausentes-o-incorrectos)
-   - [Problema 2: Push Incompleto](#problema-2-push-incompleto)
+🔹 Las ramas de Git no estaban alineadas con las tareas de Jira.
+💡 Solución:
+✅ Crear ramas por tarea en el formato: feature/DI-{número}-{descripción}.
+📝 Problemas Relacionados con Git
+⚠️ Problema: Commits Ausentes o Incorrectos
 
-## Problemas Relacionados con Jira
+🔹 Los commits no reflejaban correctamente el trabajo realizado.
+💡 Solución:
+✅ Ajustar mensajes de commits con comandos como git commit --amend.
+⚠️ Problema: Push Incompleto
 
-### Problema 1: Estructura Inicial
-**Descripción**: No estaba claro cómo organizar los epics, tareas y subtareas en Jira. Esto dificultó el seguimiento del progreso.  
-**Solución**:
-- Se definieron epics basados en funcionalidades clave: Gestión de Usuarios, Productos, Inventarios, Alertas, etc.
-- Cada epic se desglosó en tareas específicas y subtareas técnicas.
+🔹 Cambios locales no subidos al repositorio remoto.
+💡 Solución:
+✅ Sincronizar cambios locales utilizando git push.
+⚠️ Problema: Confusión en la Rama de Trabajo
 
-### Problema 2: Sincronización con Ramas de Git
-**Descripción**: Las ramas de Git no estaban alineadas con las tareas de Jira.  
-**Solución**:
-- Se definió un flujo de trabajo en el que cada tarea de Jira tiene una rama en Git con el formato feature/DI-{número}-{descripción}.
+🔹 Cambios realizados en ramas equivocadas.
+💡 Solución:
+✅ Trabajar siempre en la rama principal dev y crear ramas específicas a partir de esta.
+📝 Problemas Relacionados con MySQL
+⚠️ Problema: Conexión a MySQL
 
-## Problemas Relacionados con Git
+🔹 Error al conectar el proyecto con MySQL.
+💡 Solución:
+✅ Verificar que MySQL esté corriendo y el puerto 3306 habilitado.
+✅ Revisar credenciales y cadena de conexión.
+⚠️ Problema: Configuración en application.properties
 
-### Problema 1: Commits Ausentes o Incorrectos
-**Descripción**: Los commits no reflejaban adecuadamente el trabajo realizado.  
-**Solución**:
-- Se revisaron las ramas y se ajustaron los commits utilizando `git commit --amend` para corregir mensajes y añadir cambios faltantes.
+🔹 Configuración incorrecta en credenciales o URL.
+💡 Solución:
+✅ Ajustar credenciales en el archivo de configuración.
+⚠️ Problema: Tablas de Base de Datos No Detectadas
 
-### Problema 2: Push Incompleto
-**Descripción**: Algunos commits locales no se habían subido al repositorio remoto.  
-**Solución**:
-- Se verificaron los commits locales y se realizó el push de los cambios pendientes.
+🔹 Tablas no creadas o no detectadas en MySQL.
+💡 Solución:
+✅ Confirmar existencia de tablas y revisar anotaciones en entidades.
+📝 Problemas Relacionados con PowerShell
+⚠️ Problema: Restricciones para Scripts
+
+🔹 PowerShell bloqueaba la ejecución de scripts .ps1.
+💡 Solución:
+✅ Cambiar la política de ejecución con comandos específicos.
+⚠️ Problema: Rutas con Espacios
+
+🔹 PowerShell no reconocía rutas con espacios.
+💡 Solución:
+✅ Envolver la ruta en comillas dobles para ejecutarlas correctamente.
+📝 Problemas Relacionados con Spring Boot
+⚠️ Problema: Dependencias Faltantes
+
+🔹 Dependencias esenciales no agregadas al proyecto.
+💡 Solución:
+✅ Añadir dependencias al archivo pom.xml y actualizar con mvn clean install.
+⚠️ Problema: Organización del Proyecto
+
+🔹 La estructura de paquetes no seguía las mejores prácticas.
+💡 Solución:
+✅ Reorganizar las carpetas dentro de src/main/java.
+⚠️ Problema: Cambios de javax a jakarta
+
+🔹 Spring Boot 3.x requiere jakarta.validation.
+💡 Solución:
+✅ Actualizar dependencias y modificar importaciones.
+⚠️ Problema: Error en contextLoads()
+
+🔹 Fallo al cargar el contexto en pruebas.
+💡 Solución:
+✅ Probar con una base de datos H2 en memoria y limpiar el proyecto.
+📝 Problemas Relacionados con UsuarioRepository
+⚠️ Problema: Métodos findAll() y save() no encontrados
+🔹 El compilador no encontraba los métodos en el repositorio.
+💡 Solución:
+✅ Extender JpaRepository y confirmar que las entidades tienen las anotaciones correctas (@Entity, @Id).
+📝 Problemas Relacionados con Postman
+⚠️ Problema: Código 404
+🔹 Los endpoints no respondían o devolvían errores 404.
+💡 Solución:
+✅ Verificar las rutas definidas en los controladores y usar los verbos HTTP correctos.
+🎯 Conclusión:
+Se identificaron y resolvieron problemas en Jira, Git, MySQL, PowerShell, Spring Boot y Postman, asegurando un flujo de trabajo eficiente y un proyecto funcional. 🌟🚀

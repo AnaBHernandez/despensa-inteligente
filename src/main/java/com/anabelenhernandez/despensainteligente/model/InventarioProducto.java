@@ -1,6 +1,8 @@
 package com.anabelenhernandez.despensainteligente.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class InventarioProducto {
@@ -9,14 +11,17 @@ public class InventarioProducto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idInventarioProducto;
 
+    @NotNull(message = "El inventario no puede ser nulo")
     @ManyToOne
-    @JoinColumn(name = "idInventario")
+    @JoinColumn(name = "idInventario", nullable = false)  
     private Inventario inventario;
 
+    @NotNull(message = "El producto no puede ser nulo")
     @ManyToOne
-    @JoinColumn(name = "idProducto")
+    @JoinColumn(name = "idProducto", nullable = false)  
     private Producto producto;
 
+    @Min(value = 1, message = "La cantidad debe ser mayor que 0")
     private int cantidad;
 
     // Constructor vacío necesario para JPA
