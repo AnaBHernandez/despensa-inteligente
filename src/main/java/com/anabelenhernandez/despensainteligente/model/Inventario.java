@@ -1,7 +1,15 @@
 package com.anabelenhernandez.despensainteligente.model;
 
-import javax.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Inventario {
@@ -10,30 +18,19 @@ public class Inventario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idInventario;
 
-    private String nombre;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
-
-    @ManyToMany
-    @JoinTable(
-        name = "InventarioProducto",
-        joinColumns = @JoinColumn(name = "idInventario"),
-        inverseJoinColumns = @JoinColumn(name = "idProducto")
-    )
-    private List<Producto> productos;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private Usuario usuario;  // Relación con Usuario
 
     @OneToMany(mappedBy = "inventario", fetch = FetchType.LAZY)
-    private List<Alerta> alertas;
+    private List<InventarioProducto> inventarioProductos;
 
     // Constructor vacío necesario para JPA
     public Inventario() {}
 
     // Constructor con parámetros
-    public Inventario(String nombre, Usuario usuario) {
-        this.nombre = nombre;
-        this.usuario = usuario;
+    public Inventario(List<InventarioProducto> inventarioProductos) {
+        this.inventarioProductos = inventarioProductos;
     }
 
     // Getters y setters
@@ -45,35 +42,11 @@ public class Inventario {
         this.idInventario = idInventario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public List<InventarioProducto> getInventarioProductos() {
+        return inventarioProductos;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public List<Alerta> getAlertas() {
-        return alertas;
-    }
-
-    public void setAlertas(List<Alerta> alertas) {
-        this.alertas = alertas;
+    public void setInventarioProductos(List<InventarioProducto> inventarioProductos) {
+        this.inventarioProductos = inventarioProductos;
     }
 }

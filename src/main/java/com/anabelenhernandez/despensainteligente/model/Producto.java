@@ -1,8 +1,8 @@
 package com.anabelenhernandez.despensainteligente.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -20,11 +20,11 @@ public class Producto {
     @NotNull(message = "La marca no puede ser nula")
     private String marca;
 
+    @OneToMany(mappedBy = "producto")
+    private List<InventarioProducto> inventarioProductos;
+
     @Temporal(TemporalType.DATE)
     private Date fechaCaducidad;
-
-    @ManyToMany(mappedBy = "productos")
-    private List<Inventario> inventarios;
 
     // Constructor vacío necesario para JPA
     public Producto() {}
@@ -69,11 +69,11 @@ public class Producto {
         this.fechaCaducidad = fechaCaducidad;
     }
 
-    public List<Inventario> getInventarios() {
-        return inventarios;
+    public List<InventarioProducto> getInventarioProductos() {
+        return inventarioProductos;
     }
 
-    public void setInventarios(List<Inventario> inventarios) {
-        this.inventarios = inventarios;
+    public void setInventarioProductos(List<InventarioProducto> inventarioProductos) {
+        this.inventarioProductos = inventarioProductos;
     }
 }
