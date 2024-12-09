@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DespensainteligenteApplicationTests {
-
+ // Test cases
 	@Test
 	void contextLoads() {
 	}
