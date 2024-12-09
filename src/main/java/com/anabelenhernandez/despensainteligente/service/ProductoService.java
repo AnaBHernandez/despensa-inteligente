@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.anabelenhernandez.despensainteligente.model.Producto;
 import com.anabelenhernandez.despensainteligente.repository.ProductoRepository;
-
 @Service
 public class ProductoService {
 
