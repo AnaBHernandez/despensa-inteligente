@@ -86,5 +86,4 @@
 🔹 Los endpoints no respondían o devolvían errores 404.
 💡 Solución:
 ✅ Verificar las rutas definidas en los controladores y usar los verbos HTTP correctos.
-🎯 Conclusión:
-Se identificaron y resolvieron problemas en Jira, Git, MySQL, PowerShell, Spring Boot y Postman, asegurando un flujo de trabajo eficiente y un proyecto funcional. 🌟🚀
+
